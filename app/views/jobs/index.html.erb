@@ -1,0 +1,9 @@
+<h1>職缺列表</h1>
+
+<ul>
+  <% @jobs.each do |job| %>
+    <li>
+      <%= link_to job.name, job_path(job) %>
+    </li>
+  <% end %>
+</ul>

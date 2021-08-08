@@ -1,0 +1,49 @@
+<%= form_with model: [:admin, company] do |form| %>
+  <div class="mb-3">
+    <%= form.label :name, "公司名稱", class: "form-label" %>
+    <%= form.text_field :name, class: "form-control" %>
+    <% company.errors.full_messages_for(:name).each do |message| %>
+      <div class="text-danger"><%= message %></div>
+    <% end %>
+  </div>
+  <div class="mb-3">
+    <%= form.label :introduction, "公司介紹", class: "form-label" %><br>
+    <%= form.text_area :introduction, class: "form-control", rows: 20 %>
+    <% company.errors.full_messages_for(:introduction).each do |message| %>
+      <div class="text-danger"><%= message %></div>
+    <% end %>
+  </div>
+  <div class="mb-3">
+    <%= form.label :vision, "公司理念", class: "form-label" %><br>
+    <%= form.text_area :vision, class: "form-control", rows: 15 %>
+    <% company.errors.full_messages_for(:vision).each do |message| %>
+      <div class="text-danger"><%= message %></div>
+    <% end %>
+  </div>
+  <div class="mb-3">
+    <%= form.label :news, "媒體報導", class: "form-label" %><br>
+    <%= form.text_area :news, class: "form-control", rows: 10 %>
+    <% company.errors.full_messages_for(:news).each do |message| %>
+      <div class="text-danger"><%= message %></div>
+    <% end %>
+  </div>
+  <div class="mb-3">
+    <%= form.label :salary_welfare, "公司福利", class: "form-label" %><br>
+    <%= form.text_area :salary_welfare, class: "form-control", rows: 10 %>
+    <% company.errors.full_messages_for(:salary_welfare).each do |message| %>
+      <div class="text-danger"><%= message %></div>
+    <% end %>
+  </div>
+  <div class="mb-3">
+    <div class="form-check form-switch">
+      <%= form.check_box :enabled, class: "form-check-input" %>
+      <%= form.label :enabled, "啟用", class: "form-check-label" %>
+    </div>
+    <% company.errors.full_messages_for(:enabled).each do |message| %>
+      <div class="text-danger"><%= message %></div>
+    <% end %>
+  </div>
+  <div class="mb-3">
+    <%= form.submit "存檔", class: "btn btn-primary" %>
+  </div>
+<% end %>

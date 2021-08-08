@@ -1,0 +1,18 @@
+<h1><%= @job.name %></h1>
+<section>
+  <h2>工作內容</h2>
+  <p><%= simple_format(@job.description) %></p>
+</section>
+<section>
+  <h2>條件要求</h2>
+  <p><%= simple_format(@job.requirement) %></p>
+</section>
+<section>
+  <h2>公司福利</h2>
+  <p><%= simple_format(@job.welfare) %></p>
+</section>
+<section>
+  <h2>薪資範圍</h2>
+  <p><%= simple_format(@job.salary_range) %></p>
+</section>
+<button type="button" class="btn btn-primary mx-auto">我要應徵</button>

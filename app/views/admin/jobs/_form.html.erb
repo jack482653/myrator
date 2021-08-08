@@ -1,0 +1,49 @@
+<%= form_with model: [:admin, job] do |form| %>
+  <div class="mb-3">
+    <%= form.label :name, "職缺名稱", class: "form-label" %>
+    <%= form.text_field :name, class: "form-control" %>
+    <% job.errors.full_messages_for(:name).each do |message| %>
+      <div class="text-danger"><%= message %></div>
+    <% end %>
+  </div>
+  <div class="mb-3">
+    <%= form.label :description, "工作內容", class: "form-label" %><br>
+    <%= form.text_area :description, class: "form-control", rows: 15 %>
+    <% job.errors.full_messages_for(:description).each do |message| %>
+      <div class="text-danger"><%= message %></div>
+    <% end %>
+  </div>
+  <div class="mb-3">
+    <%= form.label :requirement, "條件要求", class: "form-label" %><br>
+    <%= form.text_area :requirement, class: "form-control", rows: 15 %>
+    <% job.errors.full_messages_for(:requirement).each do |message| %>
+      <div class="text-danger"><%= message %></div>
+    <% end %>
+  </div>
+  <div class="mb-3">
+    <%= form.label :welfare, "公司福利", class: "form-label" %><br>
+    <%= form.text_area :welfare, class: "form-control", rows: 5 %>
+    <% job.errors.full_messages_for(:welfare).each do |message| %>
+      <div class="text-danger"><%= message %></div>
+    <% end %>
+  </div>
+  <div class="mb-3">
+    <%= form.label :salary_range, "薪資範圍", class: "form-label" %><br>
+    <%= form.text_area :salary_range, class: "form-control", rows: 5 %>
+    <% job.errors.full_messages_for(:salary_range).each do |message| %>
+      <div class="text-danger"><%= message %></div>
+    <% end %>
+  </div>
+  <div class="mb-3">
+    <div class="form-check form-switch">
+      <%= form.check_box :enabled, class: "form-check-input" %>
+      <%= form.label :enabled, "啟用", class: "form-check-label" %>
+    </div>
+    <% job.errors.full_messages_for(:enabled).each do |message| %>
+      <div class="text-danger"><%= message %></div>
+    <% end %>
+  </div>
+  <div class="mb-3">
+    <%= form.submit "存檔", class: "btn btn-primary" %>
+  </div>
+<% end %>

@@ -1,0 +1,28 @@
+<h1><%= @company.name %></h1>
+
+<section>
+  <h2>公司介紹</h2>
+  <p><%= simple_format(@company.introduction) %></p>
+</section>
+<section>
+  <h2>公司理念</h2>
+  <p><%= simple_format(@company.vision) %></p>
+</section>
+<section>
+  <h2>媒體報導</h2>
+  <p><%= simple_format(@company.news) %></p>
+</section>
+<section>
+  <h2>薪資福利</h2>
+  <p><%= simple_format(@company.salary_welfare) %></p>
+</section>
+<section>
+  <h2>目前職缺</h2>
+  <ul>
+    <% @jobs.each do |job| %>
+      <li>
+        <%= link_to job.name, job_path(job) %>
+      </li>
+    <% end %>
+  </ul>
+</section>

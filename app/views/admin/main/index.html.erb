@@ -1,0 +1,51 @@
+<script>
+  function toggleEnabled(id) {
+      const checked = document.getElementById(id + '_enabled').checked;
+      const body = {
+          enabled: checked
+      };
+
+      fetch('/admin/jobs/' + id + '/update_enabled', {
+          method: 'PATCH', // or 'PUT'
+          body: JSON.stringify(body), // data can be `string` or {object}!
+          headers: new Headers({
+              'Content-Type': 'application/json',
+              'X-CSRF-Token': '<%= form_authenticity_token %>'
+          })
+      })
+  }
+</script>
+
+<div class="mb-4 d-flex justify-content-between align-items-center">
+  <div class="h1">管理者介面</div>
+  <div>
+    <%= link_to "管理公司資訊", admin_company_path, class: "btn btn-primary" %>
+  </div>
+</div>
+<div class="mb-2 d-flex justify-content-between align-items-center">
+  <div class="h4">目前職缺</div>
+  <div>
+    <%= link_to "新增職缺", new_admin_job_path, class: "btn btn-primary" %>
+  </div>
+</div>
+<div class="mb-4">
+  <ul class="list-group">
+    <% @jobs.each do |job| %>
+      <li class="list-group-item">
+        <div class="d-flex justify-content-between align-items-center">
+          <div>
+            <%= link_to job.name, edit_admin_job_path(job) %>
+          </div>
+          <div class="d-flex align-items-center">
+            <div class="form-check form-switch">
+              <%= check_box_tag(job.id.to_s + "_enabled", "enabled", job.enabled, class: "form-check-input", :onClick => "toggleEnabled(#{job.id})") %>
+            </div>
+            <%= button_to admin_job_path(job), method: "delete", data: {confirm: '確認刪除%s?' % job.name}, class: "btn btn-outline-danger" do %>
+              <i class="bi bi-trash"></i>
+            <% end %>
+          </div>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+</div>

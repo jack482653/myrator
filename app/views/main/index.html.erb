@@ -1,0 +1,30 @@
+<div class="mb-2 d-flex justify-content-between align-items-center">
+  <h2>精選公司</h2>
+  <%= link_to "更多公司", companies_path, class: "btn btn-primary" %>
+</div>
+<div class="row mb-4">
+  <% @companies.each do |company| %>
+    <div class="col-3">
+      <div class="card m-2">
+        <div class="card-body">
+          <%= link_to company.name, company, class: "title" %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+<div class="mb-2 d-flex justify-content-between align-items-center">
+  <h2>精選職缺</h2>
+  <%= link_to "更多職缺", jobs_url, class: "btn btn-primary" %>
+</div>
+<div class="row">
+  <% @jobs.each do |job| %>
+    <div class="col-3">
+      <div class="card m-2">
+        <div class="card-body">
+          <%= link_to job.name, job, class: "title" %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
